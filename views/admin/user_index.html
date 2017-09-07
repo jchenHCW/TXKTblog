@@ -1,0 +1,31 @@
+<%- include header.html %>
+<!--用户列表start-->
+<ol class="breadcrumb">
+    <li><a href="/admin/user">管理首页</a></li>
+    <li><span>用户列表</span></li>
+</ol>
+<h4>用户列表</h4>
+<table id="table" class="table table-hover table-bordered table-striped">
+    <tr>
+        <th>用户_ID</th>
+        <th>用户名称</th>
+        <th>密码</th>
+        <th>是否为管理员</th>
+    </tr>
+    <%
+    for(var i=0;i<users.length;i++){
+    var user = users[i];
+    %>
+    <tr>
+        <td><%-user._id.toString()%></td>
+        <td><%-user.username%></td>
+        <td><%-user.password%></td>
+        <td> <%if(user.isAdmin){%>是<%}%></td>
+    </tr>
+    <%}%>
+</table>
+<!--用户列表end-->
+<!--分页start-->
+<%- include GoPage.html %>
+<!--分页end-->
+<%- include main.html %>

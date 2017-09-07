@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>首页</title>
+    <link rel='stylesheet' href='/css/main.css'/>
+    <link rel='stylesheet' href='/css/bootstrap.css'/>
+    <script type="text/javascript" src="/js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="/js/main_index.js"></script>
+</head>
+<body style="background:#bdbdbd;">
+<div id="header">
+    <img src="/images/topic.png"/>
+</div>
+<nav id="nav">
+    <ul class="nav nav-pills" style="display:inline-block">
+        <li role="presentation" class="active"><a href="/">首页</a></li>
+        <% for(var j=0;j<categories.length ;j++){
+                category=categories[j];
+            %>
+            <li role="presentation"><a href="/"><%-category.name%></a></li>
+            <%}
+        %>
+    </ul>
+</nav>
+<div id="segment">
+    <!--left div-->
+    <div id="div_left" style="float: left;">
+        <div id="div1">
+            <nav aria-label="...">
+                <ul class="pager">
+                    <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> 上一页</a></li>
+                    总共？页，当前第1页。
+                    <li class="next"><a href="#">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+                </ul>
+            </nav>
+        </div>
+        <div id="div2">
+            <!--part1-->
+            <div id="part1" style="width: 550px;height: 160px;text-align:center;border-bottom:solid 1px #cacaca">
+                <h3>express框架标题</h3>
+                <p class="colDefault">
+                    作者：<span class="colInfo">作者一</span> -
+                    时间：<span class="colInfo">2017年4月19日 14:31:23</span> -
+                    阅读：<span class="colInfo">23</span> -
+                    评论：<span class="colInfo">3</span>
+                </p>
+                <dfn><p>这里是内容，内容还是有一些的。</p></dfn>
+                <div class="function textRight"><a href="javascript:">阅读全文</a></div>
+            </div>
+            <!--part2-->
+            <div id="part1" style="width: 550px;height: 160px;text-align:center;border-bottom:solid 1px #cacaca">
+                <h3>express框架标题</h3>
+                <p class="colDefault">
+                    作者：<span class="colInfo">作者一</span> -
+                    时间：<span class="colInfo">2017年4月19日 14:31:23</span> -
+                    阅读：<span class="colInfo">23</span> -
+                    评论：<span class="colInfo">3</span>
+                </p>
+                <dfn><p>这里是内容，内容还是有一些的。</p></dfn>
+                <div class="function textRight"><a href="javascript:">阅读全文</a></div>
+            </div>
+            <!--part3-->
+            <div id="part1" style="width: 550px;height: 160px;text-align:center;">
+                <h3>express框架标题</h3>
+                <p class="colDefault">
+                    作者：<span class="colInfo">作者一</span> -
+                    时间：<span class="colInfo">2017年4月19日 14:31:23</span> -
+                    阅读：<span class="colInfo">23</span> -
+                    评论：<span class="colInfo">3</span>
+                </p>
+                <dfn><p>这里是内容，内容还是有一些的。</p></dfn>
+                <div class="function textRight"><a href="javascript:">阅读全文</a></div>
+            </div>
+        </div>
+    </div>
+    <!--left div end-->
+    <div style="float: right;">
+        <!--right div-->
+        <% if(userInfo._id){%>
+        <!--用户信息-->
+        <div id="userdata" style="width: 250px;height: 200px;padding: 10px;"><p>
+            <div style="border-bottom: 1px solid rosybrown;width: 90px;">
+                <h4>用户信息</h4>
+            </div>
+            <p style="color: orangered;"><span class="colDanger"><%- userInfo.username %></span></p>
+            <% if(userInfo.isAdmin){%>
+            <p style="color: green;"><span class="wel">您好，管理员!</span></p>
+            <p style="text-align:center;"><a href="/admin">进入管理</a></p>
+            <%}else{%>
+            <p style="color: green;"><span class="wel">您好，欢迎回来!</span></p>
+            <%}%>
+            <p style="text-align: center" id="logout"><span><a href="javascript:;" style="color: black">退出</a></span>
+            </p>
+        </div>
+        <%}
+        else{%>
+        <!--用户信息end-->
+        <!--loginbox-->
+        <div id="loginbox" class="rightBox" style="width: 250px;height: 200px;background:gainsboro;padding: 10px;">
+            <div style="border-bottom: 1px solid rosybrown;width: 90px;">
+                <h4>用户登陆</h4>
+            </div>
+            <div style="text-align:right;margin-top:15px;">
+                用户名:<input type="text" id="login_user" name="username" style="width: 160px"/><br/>
+                密码:<input type="password" id="login_pwd" name="password" style="width: 160px"/><br/>
+                <input type="submit" id="login_bt" value="登陆"/>
+                <p class="textRight" style="text-align: right">没有账号？<a href="javascript:;" class="colMint">马上注册!</a></p>
+                <p class="colWarning textCenter" style="text-align: right;color:orangered;"></p>
+            </div>
+        </div>
+        <!--loginbox end-->
+
+        <!--regbox-->
+        <div id="regbox" class="rightBox" style="width: 250px;height: 200px;padding: 10px;display: none;">
+            <div style="border-bottom: 1px solid rosybrown;width: 90px;">
+                <h4>用户注册</h4>
+            </div>
+            <div style="text-align:right;margin-top:15px;">
+                用户名:<input type="text" id="txt_user" name="username" style="width: 160px"/><br/>
+                密码:<input type="password" id="txt_pwd" name="password" style="width: 160px"/><br/>
+                确认密码:<input type="password" id="txt_repwd" name="repassword" style="width: 160px"/><br/>
+                <input type="submit" value="注册" id="txt_bt"/>
+                <p class="textRight" style="text-align: right">已有账号？<a href="javascript:;" class="colMint">马上登陆!</a></p>
+                <p class="colWarning textCenter" style="text-align: right;color:orangered;"></p>
+            </div>
+            <%}%>
+            <!--regbox end-->
+        </div>
+        <!--right div end-->
+    </div>
+</div>
+<!--footer-->
+<div class="copyright textCenter" style="text-align:center;height:80px;margin: 25px;">Copyright 版权所有，翻版必究</div>
+</body>
+</html>

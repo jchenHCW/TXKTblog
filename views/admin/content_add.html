@@ -1,0 +1,34 @@
+<%- include header.html %>
+<ol class="breadcrumb">
+    <li><a href="/admin/user">管理首页</a></li>
+    <li><span>添加内容</span></li>
+</ol>
+<h3>内容添加</h3>
+<!--表单start-->
+<form role="form" method="post">
+    <div class="form-group>
+        <label for="category">所属分类</label>
+        <select class="form-control" id="category" name="category" style="width:150px">
+            <% for(var l=0;l<categories.length;l++){
+            var category=categories[l];
+            %>
+            <option value="<%- category.id %>"><%- category.name %></option>
+            <%}%>
+        </select>
+    </div>
+    <div class="form-group" >
+        <label for="title">内容标题</label>
+        <input type="text" name="title" class="form-control" id="title" placeholder="内容标题" style="width:500px" >
+    </div>
+    <div class="form-group">
+        <label for="description">内容简介</label>
+        <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="content">主要内容</label>
+        <textarea class="form-control" id="content" name="content" rows="8"></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+<!--表单end-->
+<%- include main.html %>

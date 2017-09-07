@@ -1,0 +1,45 @@
+<%- include header.html %>
+<!--内容列表start-->
+<ol class="breadcrumb">
+    <li><a href="/admin/user">管理首页</a></li>
+    <li><span>内容首页</span></li>
+</ol>
+<h4>内容列表</h4>
+<!--分页start-->
+<!--分页end-->
+<!--
+<table class="table table-hover table-bordered table-striped">
+    <tr>
+        <th>内容_ID</th>
+        <th>内容名称</th>
+        <th>操作</th>
+    </tr>
+    <%
+    for(var i=0;i<contents.length;i++){
+    var content = contents[i];
+    %>
+    <tr>
+        <td><%-content._id.toString()%></td>
+        <td><%-content.name%></td>
+        <td>
+            <a href="/admin/content/edit?id=<%- category._id.toString() %>">修改</a>|
+            <a href="/admin/content/delete?id=<%- category._id.toString() %>">删除</a>
+        </td>
+    </tr>
+    <%}%>
+</table>
+&lt;!&ndash;分类列表end&ndash;&gt;
+&lt;!&ndash;分页start&ndash;&gt;
+<nav aria-label="...">
+    <ul class="pager">
+        <li class="previous"><a href="/admin/category?page=<%- page-1 %>"><span aria-hidden="true">&larr;</span>上一页</a></li>
+        <li>一共<%- count %>条数据，每页<%- limit %>条，总共<%- pages %>页，当前第<%- page %>页!</li>
+        <li class="next"><a href="/admin/category?page=<%- page+1 %>">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+    </ul>
+</nav>
+&lt;!&ndash;分页end&ndash;&gt;
+-->
+
+
+
+<%- include main.html %>

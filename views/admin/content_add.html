@@ -1,0 +1,44 @@
+<%- include header.html %>
+<ol class="breadcrumb">
+    <li><a href="/admin/user">管理首页</a></li>
+    <li><span>添加内容</span></li>
+</ol>
+<!--表单start-->
+<!--
+<form class="form-inline">
+<select class="form-control" style="width: 60px" >
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+</select>
+<input type="text" class="form-control" placeholder="Text input">
+
+<textarea class="form-control" rows="3"></textarea>
+</form>
+-->
+<form method="post">
+    <div class="form-group">
+        <label for="select">分类名称</label>
+        <select class="form-control" style="width: 100px" id="select" name="select">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="title">内容标题</label>
+        <input type="text" name="title" class="form-control" id="title" style="width: 500px" placeholder="内容标题">
+    </div>
+    <div class="form-group">
+        <label for="description">内容简介</label>
+        <input type="text" name="description" class="form-control" id="description" placeholder="内容简介">
+    </div>
+    <textarea class="form-control" name="maincontent" rows="8"></textarea>
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+<!--表单end-->
+<%- include main.html %>

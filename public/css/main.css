@@ -1,0 +1,46 @@
+
+body {
+    padding: 0px;
+    margin: 0px;
+    line-height: 15px;
+    height: auto;
+}
+
+h1, h2, h3, h4, h5, h6, p, em, a {
+    padding: 0px;
+    margin: 0px;
+    text-decoration: none;
+    font-style: normal;
+    font-family: normal;
+}
+
+li {
+    list-style: none;
+}
+
+#header {
+    padding: 0px;
+    margin: 0;
+    height: 100px;
+    width: 100%;
+    background-image: url('/images/header.jpg');
+    text-align: center;
+}
+
+#nav {
+    text-align: center;
+    margin: 20px auto auto auto;
+}
+
+#segment {
+    height: 650px;
+    /*
+    height:auto;
+    */
+    width: 1000px;
+    padding: auto;
+    margin: 15px auto auto auto;
+    background: gainsboro;
+}
+
+

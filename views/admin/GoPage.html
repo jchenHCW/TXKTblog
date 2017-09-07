@@ -1,0 +1,39 @@
+<!--分页start-->
+<nav aria-label="Page navigation" style="text-align: center;">
+    <p>每页显示<%- limit %>条,当前显示<%- page %>/<%- pages %>页（共<%- count %>条记录）</p>
+    <ul class="pagination pagination" style="display: inline-block;margin: 0 auto">
+        <li>
+            <span><a href="/admin/user?page=<%- pages-pages+1 %>">首页</a></span>
+            <a href="/admin/user?page=<%- page-1 %>" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <%
+        for(var k=1;k <= pages ;k++){
+        %>
+        <% if(k==page){%>
+        <li class="active">
+            <a href="/admin/user?page=<%- k %>"><%- k %></a>
+        </li>
+        <%}else{%>
+        <li>
+            <a href="/admin/user?page=<%- k %>"><%- k %></a>
+        </li>
+        <%}%>
+        <%}%>
+        <li>
+            <a href="/admin/user?page=<%- page+1 %>" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+            <a href="/admin/user?page=<%- pages %>">
+                <span  aria-hidden="true">尾页</span>
+            </a>
+        </li>
+        <form class="form-inline" style="float: left;margin-left:15px;" method="get">
+            <input name="page" type="text" size="1px" class="form-control" placeholder="页码" style="text-align:                      center">
+            <a href="/admin/user?page=<%- GoPage %>"><input type="submit" class="btn btn-default" value="GO" /></a>
+        </form>
+    </ul>
+</nav>
+
+<!--分页end-->

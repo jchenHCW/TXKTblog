@@ -1,0 +1,20 @@
+
+<!--分页start-->
+<nav aria-label="...">
+    <ul class="pager">
+        <% if(page<=1){%>
+        <li class="previous"><span aria-hidden="true">没有上一页了</span></li>
+        <%}else{%>
+        <li class="previous"><a href="/?page=<%- page-1 %>"><span aria-hidden="true"></span>上一页</a></li>
+        <%}%>
+
+        <li>一共<%- count %>条数据，每页<%- limit %>条，当前第<%- page %>/<%- pages %>页!</li>
+
+        <% if(page==pages){%>
+        <li class="next"><span aria-hidden="true">没有下一页了</span></li>
+        <%}else{%>
+        <li class="next"><a href="/?page=<%- page+1 %>">下一页 <span aria-hidden="true"></span></a></li>
+        <%}%>
+    </ul>
+</nav>
+<!--分页end-->

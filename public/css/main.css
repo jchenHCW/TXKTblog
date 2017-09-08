@@ -18,7 +18,7 @@ li {
     list-style: none;
 }
 
-#header {
+.header {
     padding: 0px;
     margin: 0;
     height: 100px;
@@ -26,21 +26,17 @@ li {
     background-image: url('/images/header.jpg');
     text-align: center;
 }
-
-#nav {
+.nav {
     text-align: center;
     margin: 20px auto auto auto;
-}
 
-#segment {
-    height: 650px;
-    /*
-    height:auto;
-    */
+}
+.segment {
+    height:900px;
     width: 1000px;
     padding: auto;
     margin: 15px auto auto auto;
-    background: gainsboro;
+    background:#d6e9c6;
 }
 
 

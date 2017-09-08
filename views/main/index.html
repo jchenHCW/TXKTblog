@@ -8,71 +8,50 @@
     <script type="text/javascript" src="/js/main_index.js"></script>
 </head>
 <body style="background:#bdbdbd;">
-<div id="header">
+<div class="header">
     <img src="/images/topic.png"/>
 </div>
-<nav id="nav">
+<nav class="nav">
     <ul class="nav nav-pills" style="display:inline-block">
         <li role="presentation" class="active"><a href="/">首页</a></li>
         <% for(var j=0;j<categories.length ;j++){
                 category=categories[j];
             %>
-            <li role="presentation"><a href="/"><%-category.name%></a></li>
+            <li role="presentation"><a href="/?category=<%- category._id %>"><%-category.name%></a></li>
             <%}
         %>
     </ul>
 </nav>
-<div id="segment">
+<div class="segment">
     <!--left div-->
-    <div id="div_left" style="float: left;">
-        <div id="div1">
-            <nav aria-label="...">
-                <ul class="pager">
-                    <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> 上一页</a></li>
-                    总共？页，当前第1页。
-                    <li class="next"><a href="#">下一页 <span aria-hidden="true">&rarr;</span></a></li>
-                </ul>
-            </nav>
-        </div>
+    <div id="div_left" style="float: left;width: 600px">
+
+
+            <%
+            for(var n=0;n<contents.length;n++){
+            var content = contents[n];
+            %>
         <div id="div2">
             <!--part1-->
             <div id="part1" style="width: 550px;height: 160px;text-align:center;border-bottom:solid 1px #cacaca">
-                <h3>express框架标题</h3>
+                <h3><%- content.title %></h3>
                 <p class="colDefault">
-                    作者：<span class="colInfo">作者一</span> -
-                    时间：<span class="colInfo">2017年4月19日 14:31:23</span> -
-                    阅读：<span class="colInfo">23</span> -
-                    评论：<span class="colInfo">3</span>
+                    作者：<span class="colInfo"><%- content.user.username %></span>&nbsp;&nbsp;&nbsp;
+                    时间：<span class="colInfo"><%- content.addTime.toLocaleString() %></span> &nbsp;&nbsp;&nbsp;
+                    阅读：<span class="colInfo"><%- content.views %></span>&nbsp;&nbsp;&nbsp;
+                    评论：<span class="colInfo">3</span>&nbsp;&nbsp;&nbsp;
                 </p>
                 <dfn><p>这里是内容，内容还是有一些的。</p></dfn>
                 <div class="function textRight"><a href="javascript:">阅读全文</a></div>
             </div>
-            <!--part2-->
-            <div id="part1" style="width: 550px;height: 160px;text-align:center;border-bottom:solid 1px #cacaca">
-                <h3>express框架标题</h3>
-                <p class="colDefault">
-                    作者：<span class="colInfo">作者一</span> -
-                    时间：<span class="colInfo">2017年4月19日 14:31:23</span> -
-                    阅读：<span class="colInfo">23</span> -
-                    评论：<span class="colInfo">3</span>
-                </p>
-                <dfn><p>这里是内容，内容还是有一些的。</p></dfn>
-                <div class="function textRight"><a href="javascript:">阅读全文</a></div>
-            </div>
-            <!--part3-->
-            <div id="part1" style="width: 550px;height: 160px;text-align:center;">
-                <h3>express框架标题</h3>
-                <p class="colDefault">
-                    作者：<span class="colInfo">作者一</span> -
-                    时间：<span class="colInfo">2017年4月19日 14:31:23</span> -
-                    阅读：<span class="colInfo">23</span> -
-                    评论：<span class="colInfo">3</span>
-                </p>
-                <dfn><p>这里是内容，内容还是有一些的。</p></dfn>
-                <div class="function textRight"><a href="javascript:">阅读全文</a></div>
-            </div>
-        </div>
     </div>
+        <%}%>
+        <div style="margin-top:20px">
+<%- include GoPage_main.html %>
+        </div>
+
+    </div>
+
     <!--left div end-->
     <div style="float: right;">
         <!--right div-->
@@ -96,7 +75,7 @@
         else{%>
         <!--用户信息end-->
         <!--loginbox-->
-        <div id="loginbox" class="rightBox" style="width: 250px;height: 200px;background:gainsboro;padding: 10px;">
+        <div id="loginbox" class="rightBox" style="width: 250px;height: 200px;padding: 10px;">
             <div style="border-bottom: 1px solid rosybrown;width: 90px;">
                 <h4>用户登陆</h4>
             </div>
@@ -130,6 +109,6 @@
     </div>
 </div>
 <!--footer-->
-<div class="copyright textCenter" style="text-align:center;height:80px;margin: 25px;">Copyright 版权所有，翻版必究</div>
+<div class="copyright textCenter" style="text-align:center;height:80px;margin: auto auto auto 25px;">Copyright 版权所有，翻版必究</div>
 </body>
 </html>

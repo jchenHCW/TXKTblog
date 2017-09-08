@@ -19,7 +19,7 @@ module.exports = new mongoose.Schema({
     //添加时间
     addTime:{
         type:Date,
-        default:new Date()
+        default:Date.now
     },
     //阅读量
     views:{

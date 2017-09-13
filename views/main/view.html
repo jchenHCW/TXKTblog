@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>views</title>
+    <link rel='stylesheet' href='/css/main.css'/>
+    <link rel='stylesheet' href='/css/bootstrap.css'/>
+    <script type="text/javascript" src="/js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="/js/post.js"></script>
+    <script type="text/javascript" src="/js/main_index.js"></script>
+</head>
+<body style="background:#bdbdbd;">
+<div class="header">
+    <img src="/images/topic.png"/>
+</div>
+<nav class="nav">
+    <ul class="nav nav-pills" style="display:inline-block">
+        <%if(content.category==''){%>
+        <li role="presentation" class="active"><a href="/">首页</a></li>
+        <%}else{%>
+        <li role="presentation"><a href="/">首页</a></li>
+        <%}%>
+
+        <% for(var j=0;j
+        <categories.length ;j++){
+                           _category=categories[j];
+                           %>
+            <%if(content.category==_category.id){%>
+            <li role="presentation" class="active"><a href="/?category=<%- _category._id %>"><%-_category.name%></a>
+            </li>
+            <%}else{%>
+            <li role="presentation"><a href="/?category=<%- _category._id %>"><%-_category.name%></a></li>
+            <%}%>
+            <%}
+            %>
+    </ul>
+</nav>
+<div class="segment clearfix">
+    <!--left div-->
+    <div id="div_left" style="float: left;width: 740px;border-right: 1px solid #ddd;">
+        <div id="div2">
+            <!--part1-->
+            <div id="part1" style="width: 740px;text-align:left;line-height:30px; padding:10px 20px;">
+                <h3><%- content.title %></h3>
+                <p class="colDefault">
+                    作者：<span class="colInfo"><%- content.user.username %></span>&nbsp;&nbsp;&nbsp;
+                    时间：<span class="colInfo"><%- content.addTime.toLocaleString() %></span> &nbsp;&nbsp;&nbsp;
+                    阅读：<span class="colInfo"><%- content.views %></span>&nbsp;&nbsp;&nbsp;
+                    评论：<span class="colInfo"><%- content.posts.length %></em></span>&nbsp;&nbsp;&nbsp;
+
+                </p>
+                <dfn><p><%- content.content %></p></dfn>
+            </div>
+        </div>
+        <div style="margin-top:20px">
+        </div>
+        <!--评论start-->
+        <span>共<%- content.posts.length %>条评论</span>
+        <div class="clearfix" style="border-top: solid 1px orangered">
+            <%if(userInfo._id){%>
+            <div id="PostBox" style="margin: 15px;line-height: 20px;">
+                <div style="margin-bottom: 20px;">
+                    <input type="hidden" id="contentId" value="<%- content.id %>"/>
+                    <textarea id="text_post" name="postcontent" class="form-control" rows="5"
+                              placeholder="评论内容"></textarea>
+                </div>
+                <div>
+                    <button type="button" id="bt_txt" class="btn btn-primary btn-sm">发表</button>
+                </div>
+            </div>
+            <%}else{%>
+            <div id="NotLoginBox" style="background: orangered;" class="col-md-5">
+                <span>还没登陆呢，请登陆之后再发表评论吧!</span>
+            </div>
+            <div style="text-align: center;line-height: 20px">&nbsp;
+                <% for(var k=0;k
+                <content.posts.length;k++){
+                var _posts=content.posts[k];
+                %>
+                <div class="col-md-6"><%- _posts.username %></div>
+                <div class="col-md-6 "><%- _posts.postTime.toLocaleString() %></div>
+                <div><span><%- _posts.postcontent %></span></div>
+            <%} %>
+            <%}%>
+            <div class="messagelist" style="text-align: center;line-height: 20px"></div>
+        </div>
+        <!--评论end-->
+        <!--分页start-->
+            <%if(userInfo._id){%>
+            <div class="pager">
+                <ul class="clear">
+                    <li class="previous"><a href="">上一页</a></li>
+                    <li><em id="page1"></em></li>
+                    /
+                    <li><em id="page2"></em></li>
+                    <li class="next"><a href="">下一页</a></li>
+                </ul>
+            </div>
+            <%}else{%>
+            <%- content.posts.length  %>
+            <%}%>
+
+        <!--分页end-->
+
+    </div>
+    <!--left div end-->
+    <div style="float: right;">
+        <!--right div-->
+        <% if(userInfo._id){%>
+        <!--用户信息-->
+        <div id="userdata" style="width: 250px;height:auto;padding: 10px;float: right" class="clearfix"><p>
+            <div style="border-bottom: 1px solid rosybrown;width: 90px;">
+                <h4>用户信息</h4>
+            </div>
+            <p style="color: orangered;"><span class="colDanger"><%- userInfo.username %></span></p>
+            <% if(userInfo.isAdmin){%>
+            <p style="color: green;"><span class="wel">您好，管理员!</span></p>
+            <p style="text-align:center;"><a href="/admin">进入管理</a></p>
+            <%}else{%>
+            <p style="color: green;"><span class="wel">您好，欢迎回来!</span></p>
+            <%}%>
+            <p style="text-align: center" id="logout"><span><a href="javascript:;" style="color: black">退出</a></span>
+            </p>
+        </div>
+        <%}
+        else{%>
+        <!--用户信息end-->
+        <!--loginbox-->
+        <div id="loginbox" class="rightBox" style="width: 250px;padding: 10px; " class="clearfix">
+            <div style="border-bottom: 1px solid rosybrown;width: 90px;">
+                <h4>用户登陆</h4>
+            </div>
+
+            <div class="login-input clearfix">
+                <label>用户名:</label><input type="text" id="login_user" name="username" style="width: 160px"/>
+            </div>
+            <div class="login-input clearfix">
+                <label>密码:</label><input type="password" id="login_pwd" name="password" style="width: 160px"/>
+            </div>
+            <button type="submit" id="login_bt" class="login-butn clearfix">登陆</button>
+            <div class="login-input clearfix" style="padding-left:65px;margin-top:5px;">
+                没有账号？<a href="javascript:;" class="colMint">马上注册!</a>
+            </div>
+            <p class="colWarning textCenter" style="padding-left:65px;color:orangered;"></p>
+
+        </div>
+        <!--loginbox end-->
+
+        <!--regbox-->
+        <div id="regbox" class="rightBox" style="width: 250px;padding: 10px;display: none;" class="clearfix">
+            <div style="border-bottom: 1px solid rosybrown;width:75px;">
+                <h4>用户注册</h4>
+            </div>
+
+            <div class="login-input clearfix">
+                <label>用户名:</label>
+                <input type="text" id="txt_user" name="username" style="width: 160px"/>
+            </div>
+            <div class="login-input clearfix">
+                <label>密码:</label>
+                <input type="password" id="txt_pwd" name="password" style="width: 160px"/>
+            </div>
+            <div class="login-input clearfix">
+                <label>确认密码:</label>
+                <input type="password" id="txt_repwd" name="repassword" style="width: 160px"/>
+            </div>
+            <button type="submit" id="txt_bt" class="login-butn clearfix">注册</button>
+            <div class="login-input clearfix" style="padding-left:65px;margin-top:5px;">
+                已有账号？<a href="javascript:;" class="colMint">马上登陆!</a>
+            </div>
+            <p class="colWarning textCenter" style="padding-left:65px;color:orangered;"></p>
+
+        </div>
+        <%}%>
+        <!--regbox end-->
+    </div>
+    <!--right div end-->
+</div>
+</div>
+
+<!--footer-->
+<div class="copyright textCenter" style="text-align:center;height:80px;margin: auto auto auto 25px;">Copyright
+    版权所有，翻版必究
+</div>
+</body>
+</html>

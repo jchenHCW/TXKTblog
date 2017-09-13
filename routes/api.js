@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/User');
+var Content = require('../models/Content');
+var Category = require('../models/Category');
 
 
 //统一返回格式。
@@ -120,6 +122,40 @@ router.post('/user/login', function (req, res, next) {
 router.get('/user/logout', function (req, res) {
     req.cookies.set('userInfo', null);
     res.end();
+});
+
+
+/*获取指定文章的所有评论*/
+router.get('/comment',function (req,res) {
+   var contentId=req.query.contentid||'';
+   Content.findOne({_id:contentId}).then(function (content) {
+       resData.data=content.posts;
+       res.json(resData);
+   })
+});
+
+
+/*
+* 评论提交
+* */
+router.post('/comment/post', function (req, res) {
+    var contentId = req.body.contentid || '';
+    //console.log(req.body.contentid);
+    var postData = {
+        username: req.userInfo.username,
+        postTime:new Date(),
+        postcontent: req.body.postcontent
+    };
+    //查询当前这篇文章内容的信息
+    Content.findOne({_id: contentId}).then(function (content) {
+        content.posts.push(postData);
+        return content.save();
+    }).then(function (newContent) {
+        resData.message = '评论成功';
+       // console.log(resData);
+        resData.data=newContent;
+        res.json(resData);
+    });
 });
 
 

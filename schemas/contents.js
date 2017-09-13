@@ -37,5 +37,10 @@ module.exports = new mongoose.Schema({
     content:{
         type:String,
         default:''
+    },
+    //评论
+posts:{
+        type:Array,
+        default:[]
     }
 });

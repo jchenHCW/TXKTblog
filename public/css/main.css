@@ -5,6 +5,14 @@ body {
     line-height: 15px;
     height: auto;
 }
+.clearfix { zoom:1; }
+.clearfix:after {
+    content:".";
+    display:block;
+    height:0;
+    visibility:hidden;
+    clear:both;
+}
 
 h1, h2, h3, h4, h5, h6, p, em, a {
     padding: 0px;
@@ -32,11 +40,21 @@ li {
 
 }
 .segment {
-    height:900px;
+    height:auto;
     width: 1000px;
     padding: auto;
     margin: 15px auto auto auto;
     background:#d6e9c6;
 }
 
-
+/*用户登录表单样式*/
+.login-input{
+    height:30px;
+    line-height: 30px;
+    margin-top: 15px;
+}
+.login-input label{
+    width:65px;
+    text-align: right;
+}
+.login-butn{margin-left:65px;margin-top: 10px;}

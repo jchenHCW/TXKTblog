@@ -5,15 +5,18 @@
         <% if(page<=1){%>
         <li class="previous"><span aria-hidden="true">没有上一页了</span></li>
         <%}else{%>
-        <li class="previous"><a href="/?page=<%- page-1 %>"><span aria-hidden="true"></span>上一页</a></li>
+        <li class="previous"><a href="/?category=<%- category %>&page=<%- page-1 %>"><span aria-hidden="true"></span>上一页</a></li>
+        <%}%>
+<%- category._id%>
+
+        <%if(pages==0){%><li>提示:当前没有查询的该类型的文章!</li><%}else{%>
+        <li>一共<%- count %>条数据，每页<%- limit %>条，当前第<%- page %>/<%- pages %>页!</li>
         <%}%>
 
-        <li>一共<%- count %>条数据，每页<%- limit %>条，当前第<%- page %>/<%- pages %>页!</li>
-
-        <% if(page==pages){%>
+        <% if(page==pages||pages==0){%>
         <li class="next"><span aria-hidden="true">没有下一页了</span></li>
         <%}else{%>
-        <li class="next"><a href="/?page=<%- page+1 %>">下一页 <span aria-hidden="true"></span></a></li>
+        <li class="next"><a href="/?category=<%- category %>&page=<%- page+1 %>">下一页 <span aria-hidden="true"></span></a></li>
         <%}%>
     </ul>
 </nav>
